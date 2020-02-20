@@ -1,0 +1,61 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+     
+    <h:head>
+    </h:head>
+ 
+    <h:body style="margin:0px;">
+	    <p:breadCrumb>
+		    <p:menuitem value="Index" url="http://localhost:9080/AppWebCRUD/faces/vista/index.xhtml" />
+		    <p:menuitem value="Crear" url="http://localhost:9080/AppWebCRUD/faces/vista/crear.xhtml" /> 
+		    <p:menuitem value="Películas" url="http://localhost:9080/AppWebCRUD/faces/vista/index.xhtml" />
+		</p:breadCrumb>
+		
+			<p:dataTable id="data" var="item" value="#{listarPelicula.listaPeliculas}" rowKey="#{item.id}" emptyMessage="No hay películas disponibles">
+				<p:column headerText="Nombre">
+					<h:outputText value="#{item.nombre}"/>
+				</p:column>
+				
+				<p:column headerText="Genero">
+					<h:outputText value="#{item.genero}"/>
+				</p:column>
+				
+				<p:column headerText="Duración en minutos">
+					<h:outputText value="#{item.duracion}"/>
+				</p:column>
+				
+				<p:column headerText="Pais">
+					<h:outputText value="#{item.pais}"/>
+				</p:column>
+				
+				<p:column headerText="Año">
+					<h:outputText value="#{item.año}"/>
+				</p:column>
+				
+			
+				<p:column headerText="Acciones" style="text-align:center;">
+					
+					<p:button icon="ui-icon-delete" value="Eliminar" outcome="eliminar">
+						<f:param name="userId" value="#{item.id}"/>
+					</p:button>
+					
+					<div style="padding:3px;">
+					</div>
+					
+					<p:button icon="ui-icon-update" value="Actualizar" outcome="actualizar">
+						<f:param name="userId" value="#{item.id}"/>
+					</p:button>
+					
+					
+					
+					
+				</p:column>
+			
+				
+			</p:dataTable>
+			
+    </h:body>
+</html>
